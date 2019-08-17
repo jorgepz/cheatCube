@@ -1,0 +1,122 @@
+% =============================================================
+% ---  cheatCube: a cheatsheet that can be folded as a cube ---
+%
+% Copyright (C) 2019, Jorge M. Pérez Zerpa
+
+% This file is part of cheatCube.
+
+% cheatCube is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% cheatCube is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with cheatCube.  If not, see <https://www.gnu.org/licenses/>.
+
+% =============================================================
+
+\documentclass[10pt,a4paper]{article}
+\usepackage{tikz,verbatimbox}
+%optional libraries
+\usetikzlibrary{decorations,arrows,automata,positioning}
+\usetikzlibrary{mindmap}
+\usetikzlibrary{calc}
+\usetikzlibrary{folding}
+\usepackage{nopageno}
+\begin{document}
+
+\begin{small}
+
+% bottom
+\begin{myverbbox}{\latuno}
+ --- Git ---
+Clone project:
+ $ git clone {https://url}
+Check status of file changes:
+ $ git status
+Add changes to commit:
+ $ git add archivo2.txt
+ $ git add .
+Create commit:
+ $ git commit
+Upload commits:
+ $ git push
+\end{myverbbox}
+
+
+% lateral 1
+\begin{myverbbox}{\bot}
+ --- BASh ---
+show begining of file:
+ $ head
+show end of file:
+ $ tail
+lists files of current folder
+ $ls
+\end{myverbbox}
+
+% lateral 2
+\begin{myverbbox}{\latdos}
+ --- Git (II) ---
+Download changes from repo
+ $ git pull --all
+ $ git mv dir/oldname ...
+   dir/newname
+ $ git rm dir/nombrearchivo
+Delete folder and contents
+ $ git rm -r dirname
+\end{myverbbox}
+
+% lateral 3
+\begin{myverbbox}{\lattre}
+ --- Git (III) ---
+	$ git fetch
+	$ git checkout nombre_branch
+submodules
+	$ git submodule add ...
+	   \{https://url/repo\} repo
+\end{myverbbox}
+
+% lateral 4
+\begin{myverbbox}{\latcua}
+
+\end{myverbbox}
+
+% top
+\begin{myverbbox}{\top}
+--- Server commands ---
+Emails included in alias:
+ $ ldap -x "cn=aliasname"
+ 
+Users in group:
+ $ ldapsearch -x "cn=group"
+ 
+Space quota in server:
+ $ quota -s
+ 
+\end{myverbbox}
+%
+\end{small}
+%
+\noindent
+\begin{tikzpicture}
+  \path pic [
+    folding line length=50mm,
+    transform shape,
+    % numbered faces,
+    face 1 = {\node { \bot    };},
+    face 2 = {\node { \latuno };},
+    face 3 = {\node { \latdos };},
+    face 4 = {\node { \lattre };},
+    face 5 = {\node { \top    };},
+    face 6 = {\node { \latcua };}
+    ]
+    {cube folding};
+\end{tikzpicture}
+\end{document}
+  
